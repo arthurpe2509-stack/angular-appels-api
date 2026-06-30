@@ -1,0 +1,16 @@
+<ul class="book-grid">
+    @for (livre of livres(); track livre.key) {
+    <li class="book-card">
+        @if (livre.cover_i) {
+        <img [src]="'https://covers.openlibrary.org/b/id/' + livre.cover_i + '-M.jpg'"
+            alt="Couverture de {{ livre.title }}" (click)="voirDetail(livre)">
+        }
+
+        <h3>{{ livre.title }}</h3>
+
+        @if (livre.subjects && livre.subjects.length > 0) {
+        <p class="subjects">{{ livre.subjects.slice(0, 5).join(', ') }}</p>
+        }
+    </li>
+    }
+</ul>

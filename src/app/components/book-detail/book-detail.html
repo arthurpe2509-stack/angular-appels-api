@@ -1,0 +1,20 @@
+<a routerLink="/">← Retour à la liste</a>
+
+@if (livre) {
+<div class="book-detail">
+    <h2>{{ livre.title }}</h2>
+
+    @if (livre.covers && livre.covers.length > 0) {
+    <img [src]="'https://covers.openlibrary.org/b/id/' + livre.covers[0] + '-M.jpg'"
+        alt="Couverture de {{ livre.title }}">
+    }
+
+    <p>{{ getDescription() }}</p>
+
+    @if (livre.subjects && livre.subjects.length > 0) {
+    <p><strong>Sujets :</strong> {{ livre.subjects.join(', ') }}</p>
+    }
+</div>
+} @else {
+<p>Chargement...</p>
+}
